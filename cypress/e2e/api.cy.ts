@@ -47,6 +47,7 @@ describe('Tests API - Eco Bliss Bath', () => {
   });
 });
 
+
 it('5. Bug 2 - Ajout au panier (Attendu POST, Obtenu PUT)', () => {
   // On teste si la route d'ajout au panier accepte le verbe conventionnel POST
   cy.request({
