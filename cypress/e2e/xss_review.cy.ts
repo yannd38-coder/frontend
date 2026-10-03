@@ -15,7 +15,7 @@ describe('Sécurité - Vérification Faille XSS (Avis)', () => {
     cy.get('input, textarea').last().type(xssPayload);
     cy.get('button').contains(/publier|envoyer|poster|ajouter|valider/i).click();
 
-    // Validation de sécurité : le script injecté n'a pas été exécuté dans le DOM
+    // Validation de sécurité:le script injecté n'a pas été exécuté dans le DOM
     cy.window().should('not.have.property', 'xssTest');
   });
 });

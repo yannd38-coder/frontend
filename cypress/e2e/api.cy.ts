@@ -6,7 +6,7 @@ describe('Tests API - Eco Bliss Bath', () => {
       url: 'http://localhost:8081/orders',
       failOnStatusCode: false
     }).then((response) => {
-      // Le test va échouer (RED) car le serveur renvoie 401 au lieu de 403
+      // Le test va échouer car le serveur renvoie 401 au lieu de 403
       expect(response.status).to.eq(403);
     });
   });
@@ -49,7 +49,7 @@ describe('Tests API - Eco Bliss Bath', () => {
 
 
 it('5. Bug 2 - Ajout au panier (Attendu POST, Obtenu PUT)', () => {
-  // On teste si la route d'ajout au panier accepte le verbe conventionnel POST
+  // On teste si la route d'ajout au panier accepte le verbe POST
   cy.request({
     method: 'POST',
     url: 'http://localhost:8081/orders/add',

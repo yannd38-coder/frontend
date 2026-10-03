@@ -26,7 +26,7 @@ describe('Tests Fonctionnels - Connexion & Panier', () => {
     cy.get('input[type="number"]').clear().type('-100');
     cy.get('button').contains(/ajouter/i).click();
 
-    // 3. Contrôle de sécurité : l'application ne doit pas afficher un stock négatif
+    // 3. Contrôle de sécurité:l'application ne doit pas afficher un stock négatif
     cy.get('body').invoke('text').then((text) => {
       const match = text.match(/(-?\d+)\s*en stock/i);
       if (match) {
