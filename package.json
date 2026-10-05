@@ -6,7 +6,9 @@
     "start": "ng serve --port 8080",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "e2e": "cypress open",
+    "e2e:headless": "cypress run"
   },
   "private": true,
   "dependencies": {

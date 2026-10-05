@@ -1,18 +1,19 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.add('login', (email: string, password: string) => {
-  cy.visit('/#/login');
-  cy.get('input').eq(0).type(email);
-  cy.get('input').eq(1).type(password);
-  cy.contains('button', 'Se connecter').click();
+Cypress.Commands.add('loginViaApi', (username = 'test2@test.fr', password = 'testtest') => {
+  cy.session([username, password], () => {
+    cy.request({
+      method: 'POST',
+      url: 'http://localhost:8081/login',
+      body: {
+        username: username,
+        password: password
+      }
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      if (response.body.token) {
+        window.localStorage.setItem('token', response.body.token);
+      }
+    });
+  });
 });
-
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      login(email: string, password: string): Chainable<void>;
-    }
-  }
-}
-
-export {};
